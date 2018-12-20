@@ -13,40 +13,44 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 //Click event for submitting user location
-$("#searchButton").on("click", function(event) {
-    event.preventDefault();
+document.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
 
-    var location = $("#location-input").val().trim();
-    var latitude;
-    var longitude;
-    var riseTime;
-    var duration;
+      var location = $("#search_bar").val().trim();
+      var latitude;
+      var longitude;
+      var riseTime;
+      var duration;
 
-    var locationInfo = {
-        location: location,
-        latitude: latitude,
-        longitude: longitude,
-        riseTime: riseTime,
-        duration: duration
-      };
-    
-    var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
-    
-    //Pushes location object to Firebase
-    database.ref().push(locationInfo);
+      var locationInfo = {
+          location: location,
+          latitude: latitude,
+          longitude: longitude,
+          riseTime: riseTime,
+          duration: duration
+        };
+      
+      var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+      
+      //Pushes location object to Firebase
+      database.ref().push(locationInfo);
 
-    //AJAX Get Request
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        .then(function(response) {
-          console.log(queryURL);
-          console.log(response);
-        });
+      //AJAX Get Request
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+          .then(function(response) {
+            console.log(queryURL);
+            console.log(response);
+          });
+      
+      $("#search_bar").val("");
+    }
 });
 
-//rocket man
+//rocket man interaction
 var intervaId;
 
 intervalId = setInterval(() => { $('#rocketMan').tooltip('show')}, 3000)
