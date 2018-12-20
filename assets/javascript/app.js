@@ -43,7 +43,6 @@ $("#searchButton").on("click", function(event) {
         .then(function(response) {
           console.log(queryURL);
           console.log(response);
-          }
         });
 });
 
