@@ -43,7 +43,18 @@ $("#searchButton").on("click", function(event) {
         .then(function(response) {
           console.log(queryURL);
           console.log(response);
-          }
         });
 });
 
+//rocket man
+var intervaId;
+
+intervalId = setInterval(() => { $('#rocketMan').tooltip('show')}, 3000)
+
+$(document).on("click", function(){
+    console.log(this)
+    $('#rocketMan').tooltip('hide')
+    clearInterval(intervalId);
+    $('#rocketMan').attr('title', 'Random Info!')
+    $('#rocketMan').popover('show')
+});
