@@ -1,60 +1,73 @@
-//Initialize Firebase
-var config = {
-    apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
-    authDomain: "project-1-904b8.firebaseapp.com",
-    databaseURL: "https://project-1-904b8.firebaseio.com",
-    projectId: "project-1-904b8",
-    storageBucket: "",
-    messagingSenderId: "356456726650"
-  };
+$(document).ready(function(){
 
-firebase.initializeApp(config);
+  //Initialize Firebase
+  // var config = {
+  //     apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
+  //     authDomain: "project-1-904b8.firebaseapp.com",
+  //     databaseURL: "https://project-1-904b8.firebaseio.com",
+  //     projectId: "project-1-904b8",
+  //     storageBucket: "",
+  //     messagingSenderId: "356456726650"
+  //   };
 
-var database = firebase.database();
+  // firebase.initializeApp(config);
 
-//Click event for submitting user location
-$("#searchButton").on("click", function(event) {
-    event.preventDefault();
+  // var database = firebase.database();
 
-    var location = $("#location-input").val().trim();
-    var latitude;
-    var longitude;
-    var riseTime;
-    var duration;
+  // //Click event for submitting user location
+  // $("#searchButton").on("click", function(event) {
+  //     event.preventDefault();
 
-    var locationInfo = {
-        location: location,
-        latitude: latitude,
-        longitude: longitude,
-        riseTime: riseTime,
-        duration: duration
-      };
-    
-    var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
-    
-    //Pushes location object to Firebase
-    database.ref().push(locationInfo);
+  //     var location = $("#location-input").val().trim();
+  //     var latitude;
+  //     var longitude;
+  //     var riseTime;
+  //     var duration;
 
-    //AJAX Get Request
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        .then(function(response) {
-          console.log(queryURL);
-          console.log(response);
-        });
-});
+  //     var locationInfo = {
+  //         location: location,
+  //         latitude: latitude,
+  //         longitude: longitude,
+  //         riseTime: riseTime,
+  //         duration: duration
+  //       };
+      
+  //     var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+      
+  //     //Pushes location object to Firebase
+  //     database.ref().push(locationInfo);
 
-//rocket man
-var intervaId;
+  //     //AJAX Get Request
+  //     $.ajax({
+  //         url: queryURL,
+  //         method: "GET"
+  //       })
+  //         .then(function(response) {
+  //           console.log(queryURL);
+  //           console.log(response);
+  //         });
+  // });
 
-intervalId = setInterval(() => { $('#rocketMan').tooltip('show')}, 3000)
+  //rocket man
+  var intervaId;
 
-$(document).on("click", function(){
-    console.log(this)
-    $('#rocketMan').tooltip('hide')
-    clearInterval(intervalId);
-    $('#rocketMan').attr('title', 'Random Info!')
-    $('#rocketMan').popover('show')
+  intervalId = setInterval(() => { $('#rocketMan').tooltip('show')}, 3000)
+
+  $('#rocketMan').on("click", function(){
+      console.log("hi!")
+      $('#rocketMan').tooltip('hide')
+      clearInterval(intervalId);
+      $('#rocketMan').attr('title', 'Random Info!')
+      $('#rocketMan').popover('show')
+  });
+
+
+  //tab animations
+
+  $(".nav_tab_body").on("click", function(){
+    console.log("hi!");
+    $(this).addClass("tabsSlide");
+
+  });
+
 });
