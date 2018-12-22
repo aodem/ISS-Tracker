@@ -17,6 +17,7 @@ document.addEventListener("keyup", function (event) {
     if (event.keyCode === 13) {
       event.preventDefault();
 
+      var location = $("#search_bar").val().trim();
       var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
       
       //AJAX Get Request
@@ -31,7 +32,6 @@ document.addEventListener("keyup", function (event) {
         console.log(response.results[0].locations[0].latLng.lat);
         console.log(response.results[0].locations[0].latLng.lng);
 
-        var location = $("#search_bar").val().trim();
         var latitude = response.results[0].locations[0].latLng.lat;
         var longitude = response.results[0].locations[0].latLng.lng;
         // // var riseTime;
@@ -49,6 +49,7 @@ document.addEventListener("keyup", function (event) {
         database.ref().push(locationInfo);
         
         $("#search_bar").val("");
+        $("#search_bar").removeAttr('placeholder');
       });
     }
 });
