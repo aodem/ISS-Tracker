@@ -46,6 +46,27 @@ $(document).ready(function(){
             console.log(queryURL);
             console.log(response);
           });
+
+     //history list
+     let histArray = [];
+     if(histArray.length < 6){
+       histArray.unshift(location); 
+     }else{
+       histArray.pop();
+       histArray.unshift(location);
+     }     
+
+     let listDiv = $("<div>");
+     let listShell = $("<ul>");
+
+     for(let i = 0; i < histArray.length; i++){
+       listItem = listShell.append("<li>" + histArray[i] + "</li>")
+     }
+
+     listDiv.empty();
+     listDiv.append(listShell);
+
+     $(".tabContent").html(listDiv);
   });
 
   //rocket man
@@ -63,9 +84,6 @@ $(document).ready(function(){
 
 
   //tab animations
-
-  let tabClick_count = 0;
-
   $(".nav_tab_body").on("click", function(){
     console.log("hi!");
     if($(this).attr("data-state") === 'still'){
@@ -75,9 +93,6 @@ $(document).ready(function(){
       $(this).removeClass("tabsSlide")
       $(this).attr("data-state", 'still');
     }
-    
-
-
   });
 
 });
