@@ -21,7 +21,6 @@ $(document).ready(function () {
         var dblongitude = childSnapshot.val().longitude.toFixed(1);
         var currentLocationURL = "http://api.open-notify.org/iss-now.json";
         var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude;
-        //http://api.open-notify.org/iss-pass.json?lat=33.4&lon=-112.1
 
 
         console.log("Location Query: " + dblocation);
@@ -35,11 +34,14 @@ $(document).ready(function () {
             method: "GET",
             crossDomain: true
         })
-            .then(function (response2) {
+        .then(function (response2) {
 
-                console.log(response2);
+            console.log(response2);
 
-            });
+            //Writing Current ISS Position to the Page
+            $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
+
+        });
 
         // Pass Times API Request
         $.ajax({
@@ -48,10 +50,20 @@ $(document).ready(function () {
             crossDomain: true,
             dataType: 'jsonp'
         })
-            .then(function (response3) {
+        .then(function (response3) {
 
-                console.log(response3);
+            console.log(response3);
 
-            });
+            //Writing ISS Pass Times to the Page
+
+            
+            
+            
+            for (var i = 0; i < response3.response.length; i++) {
+                var unixRiseTime = response3.response[i].risetime;
+                $("#pass-times").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
+            }
+        });
+
     });
 });
