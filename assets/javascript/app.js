@@ -51,5 +51,52 @@ document.addEventListener("keyup", function (event) {
       //Changes window to results page
       window.location.replace("results.html");
     });
+
+     //history list
+     let histArray = [];
+     if(histArray.length < 6){
+       histArray.unshift(location); 
+     }else{
+       histArray.pop();
+       histArray.unshift(location);
+     }     
+
+     let listDiv = $("<div>");
+     let listShell = $("<ul>");
+
+     for(let i = 0; i < histArray.length; i++){
+       listItem = listShell.append("<li>" + histArray[i] + "</li>")
+     }
+
+     listDiv.empty();
+     listDiv.append(listShell);
+
+     $(".tabContent").html(listDiv);
   };
+});
+
+//rocket man
+var intervaId;
+
+intervalId = setInterval(() => { $('#rocketMan').tooltip('show')}, 3000)
+
+$('#rocketMan').on("click", function(){
+    console.log("hi!")
+    $('#rocketMan').tooltip('hide')
+    clearInterval(intervalId);
+    $('#rocketMan').attr('title', 'Random Info!')
+    $('#rocketMan').popover('show')
+});
+
+
+//tab animations
+$(".nav_tab_body").on("click", function(){
+  console.log("hi!");
+  if($(this).attr("data-state") === 'still'){
+    $(this).addClass("tabsSlide");
+    $(this).attr('data-state', 'animate');
+  }else if($(this).attr("data-state") === 'animate'){
+    $(this).removeClass("tabsSlide")
+    $(this).attr("data-state", 'still');
+  }
 });
