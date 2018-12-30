@@ -12,6 +12,27 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+//Function Showing Current ISS location on map
+var iss;
+
+function moveISS() {
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
+        var lat = data['iss_position']['latitude'];
+        var lon = data['iss_position']['longitude'];
+
+        if (!iss) {
+            iss = L.marker([lat,lon]).bindPopup("I am the ISS").addTo(map);
+        }
+
+        // See leaflet docs for setting up icons and map layers
+        // The update to the map is done here:
+        iss.setLatLng([lat, lon]);
+        isscirc.setLatLng([lat, lon]);
+        map.panTo([lat, lon], animate=true);
+    });
+    setTimeout(moveISS, 5000); 
+}
+
 //Pulling values from the database on page load
 $(document).ready(function () {
     database.ref().on("child_added", function (childSnapshot) {
@@ -40,7 +61,7 @@ $(document).ready(function () {
 
             //Writing Current ISS Position to the Page
             $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
-
+            moveISS();
         });
 
         // Pass Times API Request
@@ -56,7 +77,7 @@ $(document).ready(function () {
 
             //Writing ISS Pass Times to the Page
 
-            
+            $("#pass-times").append("<p>" + dblocation + "</p>");
             
             
             for (var i = 0; i < response3.response.length; i++) {
