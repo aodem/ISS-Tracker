@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
 video { 
     position: fixed;
     top: 50%;
@@ -10,17 +13,72 @@ video {
     transform: translate(-50%, -50%);
 } 
 
+h6 {
+    line-height: 17.5;
+}
+
+p {
+    font-family: 'Rajdhani', sans-serif;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 6em;
+}
+
+.tabs {
+    color: #ACC0B9;
+    background-color: rgb(29, 50, 109, 0.5);
+    z-index: -50;
+    position: relative;
+    width: 1em;
+    height: 17.5rem;
+    line-height: 4;
+    text-align: center;
+    border-top: 1px solid #ACC0B9;
+    border-right: 1px solid #ACC0B9;
+    border-bottom: 1px solid #ACC0B9;
+    float: left;
+
+}
+
+.tabContent {
+    float: left;
+    width: 13em;
+    background: rgb(172, 192, 185, 0.5);
+    height: 17.5em;
+    color: white;
+    border-radius: 3%;
+}
+
+.nav_tab_body {
+    clear: left;
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 0;
+    height: 17.75em;
+    margin-top: 0.7em;
+    left: -13.25em;
+}
+
+#nav {
+    position: fixed;
+    width: 100vw;
+}
+
 #search_bar {
     background-color: transparent;
     color: white;
 }
 
 #rocketMan {
-    z-index: -100;
+    z-index: 500;
     height: 104px;
-    position: absolute;
-    left: 0.5em;
-    bottom: 0em;
+    position: fixed;
+    right: 3.5em;
+    bottom: 2em;
+}
+
+#spacemanClick {
+    height: 104px;
 }
 
 #comet {
@@ -30,6 +88,7 @@ video {
     width: 23.3em;
 }
 
+<<<<<<< HEAD
 h1 {
     float: top;
     text-align: center;
@@ -65,3 +124,39 @@ body {
     background-position: center;
 }
 
+=======
+.tabsSlide {
+    clear: left;
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 0;
+    height: 17.75em;
+    margin-top: 0.7em;
+    left: -13.25em;
+    /* color: #ACC0B9;
+    background-color: rgb(29, 50, 109, 0.5);
+    margin-top: 1em;
+    z-index: -50;
+    position: relative;
+    width: 1em;
+    height: 4rem;
+    line-height: 4;
+    text-align: center;
+    border: 1px solid #ACC0B9; */
+    animation-name: tabSlide;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes tabSlide {
+    0% {left: -13.25em}
+    /* 25% {left: -10.25em}
+    50%{left: -9em}
+    75%{left: -5em} */
+    100%{left: 2em}
+}
+
+#mapid { 
+    height: 180px; 
+}
+>>>>>>> 2669dc8aa38625672916791d172f355dfa4fc3ff
