@@ -12,26 +12,40 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-//Function Showing Current ISS location on map
-var iss;
+//ISS Map
 
-function moveISS() {
+var mymap = L.map('mapid').setView([51.505, -0.09], 3);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZHJkaXRvIiwiYSI6ImNqcWE0Z3FzYTA4OTMzeXFwYW9wcWttM2IifQ.9gxaoN0Eh0I5wnrZq2j3tQ', {
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoiZHJkaXRvIiwiYSI6ImNqcWE0Z3FzYTA4OTMzeXFwYW9wcWttM2IifQ.9gxaoN0Eh0I5wnrZq2j3tQ'
+}).addTo(mymap);
+
+var issIcon = L.icon({
+    iconUrl: 'assets/media/ISSIcon.png',
+    iconSize:     [40, 40],
+});
+var iss = L.marker([51.5, -0.09], {icon: issIcon}).addTo(mymap);
+
+var isscirc = L.circle([51.508, -0.11], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 1000000
+}).addTo(mymap);
+
+function moveISS () {
     $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
         var lat = data['iss_position']['latitude'];
         var lon = data['iss_position']['longitude'];
-
-        if (!iss) {
-            iss = L.marker([lat,lon]).bindPopup("I am the ISS").addTo(map);
-        }
-
-        // See leaflet docs for setting up icons and map layers
-        // The update to the map is done here:
         iss.setLatLng([lat, lon]);
         isscirc.setLatLng([lat, lon]);
-        map.panTo([lat, lon], animate=true);
+        mymap.panTo([lat, lon], animate=true);
     });
     setTimeout(moveISS, 5000); 
 }
+moveISS();
 
 //Pulling values from the database on page load
 $(document).ready(function () {
@@ -61,7 +75,6 @@ $(document).ready(function () {
 
             //Writing Current ISS Position to the Page
             $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
-            moveISS();
         });
 
         // Pass Times API Request
