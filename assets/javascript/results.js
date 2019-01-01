@@ -24,14 +24,14 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.pn
 
 var issIcon = L.icon({
     iconUrl: 'assets/media/ISSIcon.png',
-    iconSize:     [40, 40],
+    iconSize: [40, 40],
 });
 var iss = L.marker([51.5, -0.09], {icon: issIcon}).addTo(mymap);
 
 var isscirc = L.circle([51.508, -0.11], {
     color: 'red',
     fillColor: '#f03',
-    fillOpacity: 0.5,
+    fillOpacity: 0.2,
     radius: 1000000
 }).addTo(mymap);
 
@@ -45,7 +45,6 @@ function moveISS () {
     });
     setTimeout(moveISS, 5000); 
 }
-moveISS();
 
 //Pulling values from the database on page load
 $(document).ready(function () {
@@ -100,4 +99,8 @@ $(document).ready(function () {
         });
 
     });
+
+    //Starting ISS Map Animation
+    moveISS();
+    
 });
