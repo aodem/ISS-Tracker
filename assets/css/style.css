@@ -88,43 +88,6 @@ p {
     width: 23.3em;
 }
 
-<<<<<<< HEAD
-h1 {
-    float: top;
-    text-align: center;
-    font-size: 50px;
-    color: blue;
-}
-
-.boxed {
-    border: 3px solid red;
-    height: 400px;
-    width: 500px;
-    box-align: center;
-    margin: 120px auto;
-    font-size: 25px;
-    color: red;
-    text-align: center;
-}
-
-#myVideo {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    z-index: -100;
-    transform: translate(-50%, -50%);
-}
-
-body {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/International_Space_Station_after_undocking_of_STS-132.jpg/1200px-International_Space_Station_after_undocking_of_STS-132.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-=======
 .tabsSlide {
     clear: left;
     position: relative;
@@ -159,4 +122,3 @@ body {
 #mapid { 
     height: 180px; 
 }
->>>>>>> 2669dc8aa38625672916791d172f355dfa4fc3ff
