@@ -54,7 +54,7 @@ $(document).ready(function () {
         var dblatitude = childSnapshot.val().latitude.toFixed(1);
         var dblongitude = childSnapshot.val().longitude.toFixed(1);
         var currentLocationURL = "http://api.open-notify.org/iss-now.json";
-        var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude;
+        var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=1";
 
 
         console.log("Location Query: " + dblocation);
