@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Rajdhani');
 
-video { 
+video, #page_two{ 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -12,6 +12,12 @@ video {
     z-index: -100;
     transform: translate(-50%, -50%);
 } 
+
+ul {
+    list-style: none;
+    line-height: 2;
+    margin: 0;
+}
 
 h6 {
     line-height: 17.5;
@@ -74,6 +80,14 @@ p {
     width: 100vw;
 }
 
+#overlay {
+    position: fixed;
+    z-index: -5;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0, 6, 103, 0.2);
+}
+
 #search_bar {
     
     background-color: transparent;
@@ -104,6 +118,45 @@ p {
     left: 0;
     height: 22.1em;
     width: 23.3em;
+}
+
+#results{
+    text-align: center;
+    position: fixed;
+    background: rgb(212, 67, 0, 0.9);
+    width: 100vw;
+    color: white;
+}
+
+#circle_title {
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    border: 2px solid rgb(212, 67, 0);
+    border-radius: 50%;
+    z-index: 10;
+    left: 35em;
+    background: antiquewhite;
+}
+
+#results_container {
+    height: 100vh;
+}
+
+#title {
+    position: fixed;
+    z-index: 1000;
+    color: white;
+    left: 27em;
+}
+
+#title_text {
+    font-size: 4em;
+    margin: 1em 0 0 0;
+}
+
+#results_containerBack {
+    background: rgb(212, 67, 0, 0.9);
 }
 
 .tabsSlide {
@@ -138,6 +191,6 @@ p {
 }
 
 #mapid { 
-    height: 180px; 
+    height: 32em; 
 }
 

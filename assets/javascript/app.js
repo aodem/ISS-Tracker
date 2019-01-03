@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 //Initialize Firebase
 var config = {
   apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
@@ -100,3 +102,4 @@ $(".nav_tab_body").on("click", function(){
     $(this).attr("data-state", 'still');
   }
 });
+})
