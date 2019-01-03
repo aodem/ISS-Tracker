@@ -14,7 +14,7 @@ var database = firebase.database();
 
 //ISS Map
 
-var mymap = L.map('mapid').setView([51.505, -0.09], 3);
+var mymap = L.map('mapid').setView([51.505, -0.09], 2);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZHJkaXRvIiwiYSI6ImNqcWE0Z3FzYTA4OTMzeXFwYW9wcWttM2IifQ.9gxaoN0Eh0I5wnrZq2j3tQ', {
     maxZoom: 18,
@@ -24,57 +24,43 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.run-bike-hike/{z}/{x}/{y}.pn
 
 var issIcon = L.icon({
     iconUrl: 'assets/media/ISSIcon.png',
-    iconSize: [40, 40],
+    iconSize: [38, 38],
 });
-var iss = L.marker([51.5, -0.09], {icon: issIcon}).addTo(mymap);
+var iss = L.marker([51.5, -0.09], { icon: issIcon }).addTo(mymap);
 
 var isscirc = L.circle([51.508, -0.11], {
     color: 'red',
     fillColor: '#f03',
     fillOpacity: 0.2,
-    radius: 1000000
+    radius: 1200000
 }).addTo(mymap);
 
-function moveISS () {
-    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function(data) {
+function moveISS() {
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
         var lat = data['iss_position']['latitude'];
         var lon = data['iss_position']['longitude'];
         iss.setLatLng([lat, lon]);
         isscirc.setLatLng([lat, lon]);
-        mymap.panTo([lat, lon], animate=true);
+        mymap.panTo([lat, lon], animate = true);
     });
-    setTimeout(moveISS, 5000); 
+    setTimeout(moveISS, 5000);
 }
 
-//Pulling values from the database on page load
 $(document).ready(function () {
-    database.ref().on("child_added", function (childSnapshot) {
+
+    //Pulling values from the database
+    database.ref().limitToLast(1).on("child_added", function (childSnapshot) {
 
         var dblocation = childSnapshot.val().location;
         var dblatitude = childSnapshot.val().latitude.toFixed(1);
         var dblongitude = childSnapshot.val().longitude.toFixed(1);
-        var currentLocationURL = "http://api.open-notify.org/iss-now.json";
-        var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude;
+        var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=1";
 
 
         console.log("Location Query: " + dblocation);
         console.log("Latitude: " + dblatitude);
         console.log("Longitude: " + dblongitude);
         console.log("ISS API URL: " + passTimesURL);
-
-        //Current Location API Request
-        $.ajax({
-            url: currentLocationURL,
-            method: "GET",
-            crossDomain: true
-        })
-        .then(function (response2) {
-
-            console.log(response2);
-
-            //Writing Current ISS Position to the Page
-            $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
-        });
 
         // Pass Times API Request
         $.ajax({
@@ -83,24 +69,71 @@ $(document).ready(function () {
             crossDomain: true,
             dataType: 'jsonp'
         })
-        .then(function (response3) {
+            .then(function (response3) {
 
-            console.log(response3);
+                console.log(response3);
 
-            //Writing ISS Pass Times to the Page
+                //Writing ISS Pass Times to the Page
 
-            $("#pass-times").append("<p>" + dblocation + "</p>");
-            
-            
-            for (var i = 0; i < response3.response.length; i++) {
-                var unixRiseTime = response3.response[i].risetime;
-                $("#pass-times").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
-            }
-        });
+                $("#pass-times").append("<p>" + dblocation + "</p>");
+
+                for (var i = 0; i < response3.response.length; i++) {
+                    var unixRiseTime = response3.response[i].risetime;
+                    $("#pass-times").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
+                }
+            });
 
     });
 
-    //Starting ISS Map Animation
+    //Current Location API Request
+    var currentLocationURL = "http://api.open-notify.org/iss-now.json";
+
+    $.ajax({
+        url: currentLocationURL,
+        method: "GET",
+        crossDomain: true
+    })
+        .then(function (response2) {
+
+            console.log(response2);
+
+            //Writing Current ISS Position to the Page
+            $("#current-position").append("<h3>ISS Current Position</h3><p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
+        });
+
+    //Current People in Space AJAX Call
+    var astronautsURL = "http://api.open-notify.org/astros.json";
+
+    $.ajax({
+        url: astronautsURL,
+        method: "GET",
+    })
+        .then(function (response4) {
+
+            console.log(response4);
+
+            $("#astronauts").append("<h3>Who Is On the ISS?</h3>");
+
+            //Writing Info to the Page
+            for (var i = 0; i < response4.people.length; i++) {
+                $("#astronauts").append("<p>" + response4.people[i].name + "</p>");
+            }
+        });
+
+    //Calling ISS Map Animation Function
     moveISS();
-    
+
+    //rocket man
+    var intervaId;
+
+    intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
+
+    $('#rocketMan').on("click", function () {
+        console.log("hi!")
+        $('#rocketMan').tooltip('hide')
+        clearInterval(intervalId);
+        $('#rocketMan').attr('title', 'Random Info!')
+        $('#rocketMan').popover('show')
+    });
+
 });
