@@ -98,7 +98,7 @@ $(document).ready(function () {
             console.log(response2);
 
             //Writing Current ISS Position to the Page
-            $("#current-position").append("<h3>ISS Current Position</h3><p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
+            $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
         });
 
     //Current People in Space AJAX Call
