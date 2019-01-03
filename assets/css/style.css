@@ -94,12 +94,6 @@ p {
     color: white;
 }
 
-#results_search {
-    background-color: transparent;
-    color: white;
-    height: 00px;
-    width: 200px;
-}
 
 #rocketMan {
     z-index: 500;
@@ -156,7 +150,7 @@ p {
 }
 
 #results_containerBack {
-    background: rgb(212, 67, 0, 0.9);
+    background: rgba(102, 37, 122, 0.596);
 }
 
 .tabsSlide {
