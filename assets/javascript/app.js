@@ -89,4 +89,5 @@ $(".nav_tab_body").on("click", function () {
     $(this).attr("data-state", 'still');
   }
 });
-});
+})
+
