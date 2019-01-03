@@ -54,27 +54,35 @@ document.addEventListener("keyup", function (event) {
         window.location.replace("results.html");
       });
 
-    //history list
-    let histArray = [];
+    // //history list
+    // // let histArray = [];
 
-    if (histArray.length < 6) {
-      histArray.unshift(location);
-    } else {
-      histArray.pop();
-      histArray.unshift(location);
-    }
+    // // if (histArray.length < 6) {
+    // //   histArray.unshift(location);
+    // // } else {
+    // //   histArray.pop();
+    // //   histArray.unshift(location);
+    // // }
 
-    let listDiv = $("<div>");
-    let listShell = $("<ul>");
+    // firebase.database.ref().limitToLast(5).once().then(function(childSnapshot) {
 
-    for (let i = 0; i < histArray.length; i++) {
-      listItem = listShell.append("<li>" + histArray[i] + "</li>")
-    }
+    // let listDiv = $("<div>");
+    // let listShell = $("<ul>");
 
-    listDiv.empty();
-    listDiv.append(listShell);
+    // var dblocation = childSnapshot.val().location;
 
-    $(".tabContent").html(listDiv);
+    // $(listShell).append(dblocation);
+    
+
+    // // for (let i = 0; i < histArray.length; i++) {
+    // //   listItem = listShell.append("<li>" + histArray[i] + "</li>")
+    // // }
+
+    // listDiv.empty();
+    // listDiv.append(listShell);
+
+    // $(".tabContent").html(listDiv);
+    // });
   };
 });
 
