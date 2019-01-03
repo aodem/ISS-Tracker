@@ -36,7 +36,7 @@ p {
     font-weight: bold;
     text-align: center;
     letter-spacing: 2px;
-    margin-top: 6em;
+    margin-top: 2em;
     color: white;
 }
 
@@ -155,6 +155,10 @@ p {
     margin: 1em 0 0 0;
 }
 
+#results_containerBack {
+    background: rgb(212, 67, 0, 0.9);
+}
+
 .tabsSlide {
     clear: left;
     position: relative;
@@ -187,6 +191,6 @@ p {
 }
 
 #mapid { 
-    height: 180px; 
+    height: 32em; 
 }
 
