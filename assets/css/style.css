@@ -17,11 +17,21 @@ h6 {
     line-height: 17.5;
 }
 
+h3 {
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: maroon;
+    font-weight: bold;
+}
+
 p {
     font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
     text-align: center;
     letter-spacing: 2px;
     margin-top: 6em;
+    color: white;
 }
 
 .tabs {
@@ -65,8 +75,16 @@ p {
 }
 
 #search_bar {
+    
     background-color: transparent;
     color: white;
+}
+
+#results_search {
+    background-color: transparent;
+    color: white;
+    height: 00px;
+    width: 200px;
 }
 
 #rocketMan {
