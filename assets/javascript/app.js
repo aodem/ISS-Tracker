@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
 //Initialize Firebase
 var config = {
   apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
@@ -23,6 +21,8 @@ var database = firebase.database();
     return !!result
   }
 
+$(document).ready(function () {
+  
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
   
@@ -69,18 +69,26 @@ document.addEventListener("keyup", function (event) {
         window.location.href = "./results.html"
         
         //Changes window to results page
-        //window.location.replace("results.html");
+        window.location.replace("results.html");
       });
-  };
+  } else if (event.keyCode === 13 && userVal == false){
+    $("#search_bar").attr("class", "form-control is-invalid has-error has-feedback");
+    $(".invalid-feedback").text("Please enter a valid location.");
+  }
 });
 
-<<<<<<< HEAD
+
+//Click Event for Using Current Location Coordinates
+
+
+
       //location.href = "./results.html"
     //history list
-    let histArray = [];
-=======
+    //let histArray = [];
+
+
   //Search History
->>>>>>> 8c75eaf4e5dd27bcff24d7f2f47a6d4108c0d4a6
+
 
   // firebase.database.ref().limitToLast(5).once().then(function (childSnapshot) {
 
