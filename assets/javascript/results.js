@@ -133,7 +133,7 @@ $(document).ready(function () {
         $('#rocketMan').tooltip('hide')
         clearInterval(intervalId);
         $('#rocketMan').attr('title', 'Random Info!')
-        $('#rocketMan').popover('show')
+        //$('#rocketMan').popover('show')
     });
 
 });

@@ -14,12 +14,26 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+//user validation function using regex to validate the location 
+
+  function isValidLocation(input) {
+    const regex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/;
+    const result = regex.exec(input)
+    // If result is null, no match was found
+    return !!result
+  }
+
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
+  //user input 
+  var location = $("#search_bar").val().trim();
+  var userVal = isValidLocation(location);
+  
+  if (event.keyCode === 13 && userVal == true) {
+    console.log(userVal);
     event.preventDefault();
-
-    var location = $("#search_bar").val().trim();
+    console.log("We are here")
+    // var location = $("#search_bar").val().trim();
     var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
 
     //AJAX Get Request -- Mapquest API
@@ -51,7 +65,7 @@ document.addEventListener("keyup", function (event) {
         database.ref().push(locationInfo);
 
         //Changes window to results page
-        window.location.replace("results.html");
+        //window.location.replace("results.html");
       });
 
     //history list
