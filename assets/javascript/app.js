@@ -71,42 +71,42 @@ document.addEventListener("keyup", function (event) {
         //Changes window to results page
         //window.location.replace("results.html");
       });
-
-      //location.href = "./results.html"
-    //history list
-    let histArray = [];
-
-    if (histArray.length < 6) {
-      histArray.unshift(location);
-    } else {
-      histArray.pop();
-      histArray.unshift(location);
-    }
-
-    let listDiv = $("<div>");
-    let listShell = $("<ul>");
-
-    for (let i = 0; i < histArray.length; i++) {
-      listItem = listShell.append("<li>" + histArray[i] + "</li>")
-    }
-
-    listDiv.empty();
-    listDiv.append(listShell);
-
-    $(".tabContent").html(listDiv);
   };
 });
 
-//tab animations
-$(".nav_tab_body").on("click", function () {
-  console.log("hi!");
-  if ($(this).attr("data-state") === 'still') {
-    $(this).addClass("tabsSlide");
-    $(this).attr('data-state', 'animate');
-  } else if ($(this).attr("data-state") === 'animate') {
-    $(this).removeClass("tabsSlide")
-    $(this).attr("data-state", 'still');
-  }
-});
+<<<<<<< HEAD
+      //location.href = "./results.html"
+    //history list
+    let histArray = [];
+=======
+  //Search History
+>>>>>>> 8c75eaf4e5dd27bcff24d7f2f47a6d4108c0d4a6
+
+  // firebase.database.ref().limitToLast(5).once().then(function (childSnapshot) {
+
+  //   let listDiv = $("<div>");
+  //   let listShell = $("<ul>");
+
+  //   var dblocation = childSnapshot.val().location;
+
+  //   $(listShell).append(dblocation);
+
+  //   listDiv.empty();
+  //   listDiv.append(listShell);
+
+  //   $(".tabContent").html(listDiv);
+  // });
+
+  //tab animations
+  $(".nav_tab_body").on("click", function () {
+    console.log("hi!");
+    if ($(this).attr("data-state") === 'still') {
+      $(this).addClass("tabsSlide");
+      $(this).attr('data-state', 'animate');
+    } else if ($(this).attr("data-state") === 'animate') {
+      $(this).removeClass("tabsSlide")
+      $(this).attr("data-state", 'still');
+    }
+  });
 })
 

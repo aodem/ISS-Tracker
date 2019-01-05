@@ -75,11 +75,11 @@ $(document).ready(function () {
 
                 //Writing ISS Pass Times to the Page
 
-                $("#pass-times").append("<p>" + dblocation + "</p>");
+                $("#passes-location").append("<p>" + dblocation + "</p>");
 
                 for (var i = 0; i < response3.response.length; i++) {
                     var unixRiseTime = response3.response[i].risetime;
-                    $("#pass-times").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
+                    $("#passes-list").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
                 }
             });
 
@@ -123,10 +123,11 @@ $(document).ready(function () {
     //Calling ISS Map Animation Function
     moveISS();
 
-    //rocket man
-    var intervaId;
+    // //rocket man
+    // var intervaId;
 
-    intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
+    // intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
+
 
     $('#rocketMan').on("click", function () {
         console.log("hi!")
@@ -134,6 +135,40 @@ $(document).ready(function () {
         clearInterval(intervalId);
         $('#rocketMan').attr('title', 'Random Info!')
         //$('#rocketMan').popover('show')
-    });
+    });    
+});
 
+//Number of Passes Drop Down Menu
+$("#numPasses").on("change", function (event) {
+
+    database.ref().limitToLast(1).on("child_added", function (childSnapshot) {
+
+        var dblocation = childSnapshot.val().location;
+        var dblatitude = childSnapshot.val().latitude.toFixed(1);
+        var dblongitude = childSnapshot.val().longitude.toFixed(1);
+  
+        var numPassesSelection = $(numPasses).val();
+        var passTimesURL2 = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=" + numPassesSelection;
+
+        console.log("NUMBER OF PASSES SELECTION: " + numPassesSelection);
+
+            // Pass Times API Request
+            $.ajax({
+                url: passTimesURL2,
+                method: "GET",
+                crossDomain: true,
+                dataType: 'jsonp'
+            })
+            .then(function (response3a) {
+    
+                //Writing ISS Pass Times to the Page
+                $("#passes-list").empty();
+    
+                for (var i = 0; i < response3a.response.length; i++) {
+                    var unixRiseTime = response3a.response[i].risetime;
+                    $("#passes-list").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
+                }
+            });
+    });
+   
 });

@@ -31,6 +31,18 @@ h3 {
     font-weight: bold;
 }
 
+h4 {
+    text-align: center;
+    font-size: 15px;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+#numPasses {
+    width: 50px;
+}
+
 p {
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
@@ -151,6 +163,8 @@ p {
 
 #results_containerBack {
     background: rgba(102, 37, 122, 0.596);
+    padding-top: 50px;
+    margin-bottom: 50px;
 }
 
 .tabsSlide {
@@ -185,6 +199,7 @@ p {
 }
 
 #mapid { 
-    height: 32em; 
+    margin-top: 50px;
+    height: 32em;
 }
 
