@@ -52,6 +52,24 @@ p {
     color: white;
 }
 
+#liveFeedContent {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    color: white;
+    padding: 40px;
+    font-size: 20px;
+    text-align: justify;
+}
+
+#liveFeedTitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    color: white;
+    padding: 40px;
+    font-size: 50px;
+    text-align: center;
+}
+
 .tabs {
     color: #ACC0B9;
     background-color: rgb(29, 50, 109, 0.5);
@@ -163,6 +181,10 @@ p {
 #results_containerBack {
     background: rgba(102, 37, 122, 0.596);
     padding-top: 40px;
+}
+
+#results_containerISS {
+    background: rgba(102, 37, 122, 0.596);
     margin-bottom: 50px;
 }
 
