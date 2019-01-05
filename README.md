@@ -1,7 +1,7 @@
 # Project-One
 ## Project one of U of A Bootcamp
 
-#### Leigh, Christian, Justin and Alex
+#### Leigh (@leightenore), Justin (@Sleepisacrutchbutcrucial), Christian (@clagarda23) and Alex (@aodem)
 
 ## Description 
 
