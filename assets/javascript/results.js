@@ -36,7 +36,7 @@ var isscirc = L.circle([51.508, -0.11], {
 }).addTo(mymap);
 
 function moveISS() {
-    $.getJSON('https://api.open-notify.org/iss-now.json?callback=?', function (data) {
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', function (data) {
         var lat = data['iss_position']['latitude'];
         var lon = data['iss_position']['longitude'];
         iss.setLatLng([lat, lon]);
@@ -54,7 +54,7 @@ $(document).ready(function () {
         var dblocation = childSnapshot.val().location;
         var dblatitude = childSnapshot.val().latitude.toFixed(1);
         var dblongitude = childSnapshot.val().longitude.toFixed(1);
-        var passTimesURL = "https://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=1";
+        var passTimesURL = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=1";
 
 
         console.log("Location Query: " + dblocation);
@@ -86,7 +86,7 @@ $(document).ready(function () {
     });
 
     //Current Location API Request
-    var currentLocationURL = "https://api.open-notify.org/iss-now.json";
+    var currentLocationURL = "http://api.open-notify.org/iss-now.json";
 
     $.ajax({
         url: currentLocationURL,
@@ -102,7 +102,7 @@ $(document).ready(function () {
         });
 
     //Current People in Space AJAX Call
-    var astronautsURL = "https://api.open-notify.org/astros.json";
+    var astronautsURL = "http://api.open-notify.org/astros.json";
 
     $.ajax({
         url: astronautsURL,
@@ -148,7 +148,7 @@ $("#numPasses").on("change", function (event) {
         var dblongitude = childSnapshot.val().longitude.toFixed(1);
   
         var numPassesSelection = $(numPasses).val();
-        var passTimesURL2 = "https://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=" + numPassesSelection;
+        var passTimesURL2 = "http://api.open-notify.org/iss-pass.json?lat=" + dblatitude + "&lon=" + dblongitude + "&n=" + numPassesSelection;
 
         console.log("NUMBER OF PASSES SELECTION: " + numPassesSelection);
 
@@ -174,6 +174,4 @@ $("#numPasses").on("change", function (event) {
 });
 
 //Rocket Man Click Event to View ISS Live Feed
-$("#rocketMan").on("click", function (event) {
-
-}
+//$("#rocketMan").on("click", function (event) {}
