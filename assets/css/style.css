@@ -108,10 +108,10 @@ p {
 
 #rocketMan {
     z-index: 500;
-    height: 104px;
+    height: 157px;
     position: fixed;
-    right: 3.5em;
-    bottom: 2em;
+    right: 0;
+    bottom: 1em;
 }
 
 #spacemanClick {
