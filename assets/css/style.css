@@ -215,3 +215,7 @@ a {
 a:hover {
     color: #ACC0B9;
 }
+
+.invalid-feedback {
+    margin-left: 88px;
+}

@@ -65,9 +65,12 @@ document.addEventListener("keyup", function (event) {
         database.ref().push(locationInfo);
 
         //Changes window to results page
-        //window.location.replace("results.html");
+        window.location.replace("results.html");
       });
-  };
+  } else if (event.keyCode === 13 && userVal == false){
+    $("#search_bar").attr("class", "form-control is-invalid has-error has-feedback");
+    $(".invalid-feedback").text("Please enter a valid location.");
+  }
 });
 
 //Click Event for Using Current Location Coordinates
