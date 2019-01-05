@@ -1,0 +1,221 @@
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
+video, #page_two{ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100vw;
+    /* height: 100vh; */
+    z-index: -100;
+    transform: translate(-50%, -50%);
+} 
+
+ul {
+    list-style: none;
+    line-height: 2;
+    margin: 0;
+}
+
+h6 {
+    line-height: 17.5;
+}
+
+h3 {
+    text-align: center;
+    font-size: 30px;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+h4 {
+    text-align: center;
+    font-size: 15px;
+    font-family: sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+#numPasses {
+    width: 50px;
+}
+
+p {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 2em;
+    color: white;
+}
+
+.tabs {
+    color: #ACC0B9;
+    background-color: rgb(29, 50, 109, 0.5);
+    z-index: -50;
+    position: relative;
+    width: 1em;
+    height: 17.5rem;
+    line-height: 4;
+    text-align: center;
+    border-top: 1px solid #ACC0B9;
+    border-right: 1px solid #ACC0B9;
+    border-bottom: 1px solid #ACC0B9;
+    float: left;
+
+}
+
+.tabContent {
+    float: left;
+    width: 13em;
+    background: rgb(172, 192, 185, 0.5);
+    height: 17.5em;
+    color: white;
+    border-radius: 3%;
+}
+
+.nav_tab_body {
+    clear: left;
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 0;
+    height: 17.75em;
+    margin-top: 0.7em;
+    left: -13.25em;
+}
+
+#nav {
+    position: fixed;
+    width: 100vw;
+}
+
+#overlay {
+    position: fixed;
+    z-index: -5;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0, 6, 103, 0.2);
+}
+
+#search_bar {
+    background-color: transparent;
+    color: white;
+}
+
+
+#rocketMan {
+    z-index: 500;
+    height: 157px;
+    position: fixed;
+    right: 0;
+    bottom: 1em;
+}
+
+#spacemanClick {
+    height: 104px;
+}
+
+#comet {
+    position: absolute;
+    left: 0;
+    height: 22.1em;
+    width: 23.3em;
+}
+
+#results{
+    text-align: center;
+    position: fixed;
+    background: rgb(212, 67, 0, 0.9);
+    width: 100vw;
+    color: white;
+}
+
+#circle_title {
+    position: fixed;
+    height: 200px;
+    width: 200px;
+    border: 2px solid rgb(212, 67, 0);
+    border-radius: 50%;
+    z-index: 10;
+    left: 35em;
+    background: antiquewhite;
+}
+
+#results_container {
+    height: 100vh;
+}
+
+#title {
+    position: fixed;
+    z-index: 1000;
+    color: white;
+    left: 27em;
+}
+
+#title_text {
+    font-size: 4em;
+    margin: 1em 0 0 0;
+}
+
+#results_containerBack {
+    background: rgba(102, 37, 122, 0.596);
+    padding-top: 40px;
+    margin-bottom: 50px;
+}
+
+.tabsSlide {
+    clear: left;
+    position: relative;
+    /* border: 1px solid red; */
+    padding: 0;
+    height: 17.75em;
+    margin-top: 0.7em;
+    left: -13.25em;
+    /* color: #ACC0B9;
+    background-color: rgb(29, 50, 109, 0.5);
+    margin-top: 1em;
+    z-index: -50;
+    position: relative;
+    width: 1em;
+    height: 4rem;
+    line-height: 4;
+    text-align: center;
+    border: 1px solid #ACC0B9; */
+    animation-name: tabSlide;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes tabSlide {
+    0% {left: -13.25em}
+    /* 25% {left: -10.25em}
+    50%{left: -9em}
+    75%{left: -5em} */
+    100%{left: 2em}
+}
+
+#mapid { 
+    margin-top: 40px;
+    height: 32em;
+}
+
+#currentLocationLink {
+    text-align: right;
+}
+
+a {
+    color: white;
+    text-decoration: underline;
+    margin-right: 3px;
+}
+
+a:hover {
+    color: #ACC0B9;
+}
+
+.invalid-feedback {
+    margin-left: 88px;
+}
