@@ -128,15 +128,14 @@ $(document).ready(function () {
 
     // intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
 
-    // $('#rocketMan').on("click", function () {
-    //     console.log("hi!")
-    //     $('#rocketMan').tooltip('hide')
-    //     clearInterval(intervalId);
-    //     $('#rocketMan').attr('title', 'Random Info!')
-    //     $('#rocketMan').popover('show')
-    // });
 
-    
+    $('#rocketMan').on("click", function () {
+        console.log("hi!")
+        $('#rocketMan').tooltip('hide')
+        clearInterval(intervalId);
+        $('#rocketMan').attr('title', 'Random Info!')
+        //$('#rocketMan').popover('show')
+    });    
 });
 
 //Number of Passes Drop Down Menu
