@@ -172,3 +172,6 @@ $("#numPasses").on("change", function (event) {
     });
    
 });
+
+//Rocket Man Click Event to View ISS Live Feed
+//$("#rocketMan").on("click", function (event) {}
