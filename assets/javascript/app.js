@@ -36,7 +36,7 @@ document.addEventListener("keyup", function (event) {
     event.preventDefault();
     console.log("We are here")
     // var location = $("#search_bar").val().trim();
-    var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+    var queryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
 
     //AJAX Get Request -- Mapquest API
     $.ajax({
@@ -69,7 +69,8 @@ document.addEventListener("keyup", function (event) {
         window.location.href = "./results.html"
         
         //Changes window to results page
-        window.location.replace("results.html");
+        // window.location.replace("results.html");
+        window.location.href = "./results.html"
       });
   } else if (event.keyCode === 13 && userVal == false){
     $("#search_bar").attr("class", "form-control is-invalid has-error has-feedback");
