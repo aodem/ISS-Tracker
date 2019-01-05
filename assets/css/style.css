@@ -96,6 +96,11 @@ p {
     color: white;
 }
 
+#results_search {
+    background-color: transparent;
+    color: white;
+}
+
 
 #rocketMan {
     z-index: 500;
