@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
 //Initialize Firebase
 var config = {
   apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
@@ -14,6 +12,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+$(document).ready(function () {
+  
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
@@ -55,6 +55,8 @@ document.addEventListener("keyup", function (event) {
       });
   };
 });
+
+//Click Event for Using Current Location Coordinates
 
   //Search History
 
