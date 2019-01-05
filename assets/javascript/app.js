@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
 //Initialize Firebase
 var config = {
   apiKey: "AIzaSyCTB2ONqGvJBBqRGg7FMr2Q8xfnH0Ejdqo",
@@ -23,6 +21,8 @@ var database = firebase.database();
     return !!result
   }
 
+$(document).ready(function () {
+  
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
   //user input 
@@ -69,6 +69,8 @@ document.addEventListener("keyup", function (event) {
       });
   };
 });
+
+//Click Event for Using Current Location Coordinates
 
   //Search History
 
