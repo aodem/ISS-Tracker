@@ -25,10 +25,12 @@ var database = firebase.database();
 
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
+  
+  $("#search_bar").empty();
   //user input 
   var location = $("#search_bar").val().trim();
   var userVal = isValidLocation(location);
-  
+
   if (event.keyCode === 13 && userVal == true) {
     console.log(userVal);
     event.preventDefault();
@@ -63,11 +65,14 @@ document.addEventListener("keyup", function (event) {
 
         //Pushes location object to Firebase
         database.ref().push(locationInfo);
-
+        
+        window.location.href = "./results.html"
+        
         //Changes window to results page
         //window.location.replace("results.html");
       });
 
+      //location.href = "./results.html"
     //history list
     let histArray = [];
 
