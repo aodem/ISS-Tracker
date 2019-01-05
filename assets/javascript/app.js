@@ -25,18 +25,16 @@ $(document).ready(function () {
   
 //Event listener for submitting user location
 document.addEventListener("keyup", function (event) {
-  
-  $("#search_bar").empty();
   //user input 
   var location = $("#search_bar").val().trim();
   var userVal = isValidLocation(location);
-
+  
   if (event.keyCode === 13 && userVal == true) {
     console.log(userVal);
     event.preventDefault();
     console.log("We are here")
     // var location = $("#search_bar").val().trim();
-    var queryURL = "https://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+    var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
 
     //AJAX Get Request -- Mapquest API
     $.ajax({
@@ -65,9 +63,7 @@ document.addEventListener("keyup", function (event) {
 
         //Pushes location object to Firebase
         database.ref().push(locationInfo);
-        
-        window.location.href = "./results.html"
-        
+
         //Changes window to results page
         // window.location.replace("results.html");
         window.location.href = "./results.html"
@@ -78,18 +74,9 @@ document.addEventListener("keyup", function (event) {
   }
 });
 
-
 //Click Event for Using Current Location Coordinates
 
-
-
-      //location.href = "./results.html"
-    //history list
-    //let histArray = [];
-
-
   //Search History
-
 
   // firebase.database.ref().limitToLast(5).once().then(function (childSnapshot) {
 
