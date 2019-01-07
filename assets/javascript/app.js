@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-//user validation function using regex to validate the location 
+//User validation function using regex to validate the location 
 
   function isValidLocation(input) {
     const regex = /([A-Za-z]+(?: [A-Za-z]+)*),? ([A-Za-z]{2})/;
@@ -23,23 +23,26 @@ var database = firebase.database();
 
 $(document).ready(function () {
   
-//Event listener for submitting user location
-document.addEventListener("keyup", function (event) {
-  //user input 
-  var location = $("#search_bar").val().trim();
-  var userVal = isValidLocation(location);
-  
-  if (event.keyCode === 13 && userVal == true) {
-    console.log(userVal);
-    event.preventDefault();
-    console.log("We are here")
-    var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+  //Event listener for submitting user location
+  document.addEventListener("keyup", function (event) {
 
-    //AJAX Get Request -- Mapquest API
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
+    //User input 
+    var location = $("#search_bar").val().trim();
+    var userVal = isValidLocation(location);
+  
+    if (event.keyCode === 13 && userVal == true) {
+      console.log(userVal);
+      event.preventDefault();
+    
+      $("#search_bar").val("");
+
+      var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
+
+      //AJAX Get Request -- Mapquest API
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
       .then(function (response) {
         console.log("Query URL: " + queryURL);
         console.log(response);
@@ -62,25 +65,27 @@ document.addEventListener("keyup", function (event) {
         database.ref().push(locationInfo);
 
         //Changes window to results page
-       
-        window.location.href = "./results.html"
-      });
-  } else if (event.keyCode === 13 && userVal == false){
-    $("#search_bar").attr("class", "form-control is-invalid has-error has-feedback");
-    $(".invalid-feedback").text("Please enter a valid location.");
-  }
-});
+        window.location.href = "./results.html";
 
-  //tab animations
+      });
+
+    } else if (event.keyCode === 13 && userVal == false) {
+      $("#search_bar").attr("class", "form-control is-invalid has-error has-feedback");
+      $(".invalid-feedback").text("Please enter a valid location.");
+    }
+  });
+
+  //Tab animation
   $(".nav_tab_body").on("click", function () {
     console.log("hi!");
     if ($(this).attr("data-state") === 'still') {
       $(this).addClass("tabsSlide");
       $(this).attr('data-state', 'animate');
     } else if ($(this).attr("data-state") === 'animate') {
-      $(this).removeClass("tabsSlide")
-      $(this).attr("data-state", 'still');
+        $(this).removeClass("tabsSlide")
+        $(this).attr("data-state", 'still');
     }
   });
-})
+  
+});
 
