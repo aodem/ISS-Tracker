@@ -26,6 +26,7 @@ var issIcon = L.icon({
     iconUrl: 'assets/media/ISSIcon.png',
     iconSize: [38, 38],
 });
+
 var iss = L.marker([51.5, -0.09], { icon: issIcon }).addTo(mymap);
 
 var isscirc = L.circle([51.508, -0.11], {
@@ -69,19 +70,19 @@ $(document).ready(function () {
             crossDomain: true,
             dataType: 'jsonp'
         })
-            .then(function (response3) {
+        .then(function (response3) {
 
-                console.log(response3);
+            console.log(response3);
 
-                //Writing ISS Pass Times to the Page
+            //Writing ISS Pass Times to the Page
 
-                $("#passes-location").append("<p>" + dblocation + "</p>");
+            $("#passes-location").append("<p>" + dblocation + "</p>");
 
-                for (var i = 0; i < response3.response.length; i++) {
-                    var unixRiseTime = response3.response[i].risetime;
-                    $("#passes-list").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
-                }
-            });
+            for (var i = 0; i < response3.response.length; i++) {
+                var unixRiseTime = response3.response[i].risetime;
+                $("#passes-list").append("<p>" + moment.unix(unixRiseTime).format("MMMM Do YYYY, h:mm a") + "</p>");
+            }
+        });
 
     });
 
@@ -93,13 +94,13 @@ $(document).ready(function () {
         method: "GET",
         crossDomain: true
     })
-        .then(function (response2) {
+    .then(function (response2) {
 
-            console.log(response2);
+        console.log(response2);
 
-            //Writing Current ISS Position to the Page
-            $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
-        });
+        //Writing Current ISS Position to the Page
+        $("#current-position").append("<p>Latitude: " + response2.iss_position.latitude + "</p><p> Longitude: " + response2.iss_position.longitude + "</p>");
+    });
 
     //Current People in Space AJAX Call
     var astronautsURL = "http://api.open-notify.org/astros.json";
@@ -108,33 +109,26 @@ $(document).ready(function () {
         url: astronautsURL,
         method: "GET",
     })
-        .then(function (response4) {
+    .then(function (response4) {
 
-            console.log(response4);
+        console.log(response4);
 
-            $("#astronauts").append("<h3>Who Is On the ISS?</h3>");
+        var numAstro = response4.people.length;
 
-            //Writing Info to the Page
-            for (var i = 0; i < response4.people.length; i++) {
-                $("#astronauts").append("<p>" + response4.people[i].name + "</p>");
-            }
-        });
+        $("#numberAstronauts").append(numAstro);
+
+        //Writing Info to the Page
+        for (var i = 0; i < response4.people.length; i++) {
+            $("#astronauts").append("<p>" + response4.people[i].name + "</p>");
+        }
+    });
 
     //Calling ISS Map Animation Function
     moveISS();
 
-    
-
-     intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
-
-
-    $('#rocketMan').on("click", function () {
-        console.log("hi!")
-        $('#rocketMan').tooltip('hide')
-        clearInterval(intervalId);
-        $('#rocketMan').attr('title', 'Random Info!')
-        //$('#rocketMan').popover('show')
-    });    
+    //Rocket Man Hover Text
+    intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
+   
 });
 
 //Number of Passes Drop Down Menu
@@ -170,5 +164,17 @@ $("#numPasses").on("change", function (event) {
             });
     });
    
+});
+
+//Rocket Man Click Event to View ISS Live Feed
+$("#rocketMan").on("click", function(event) {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#results_containerISS").offset().top
+    }, 500);
+});
+
+//Back Button Click Event
+$("#back-button").on("click", function (event) {
+    window.location.href = "./index.html";
 });
 
