@@ -178,7 +178,7 @@ p {
 
 #results_containerBack {
     background: rgba(102, 37, 122, 0.596);
-    padding-top: 40px;
+    padding-top: 15px;
 }
 
 #results_containerISS {
@@ -208,20 +208,10 @@ p {
     height: 32em;
 }
 
-#currentLocationLink {
-    text-align: right;
-}
-
-a {
-    color: white;
-    text-decoration: underline;
-    margin-right: 3px;
-}
-
-a:hover {
-    color: #ACC0B9;
-}
-
 .invalid-feedback {
     margin-left: 88px;
+}
+
+#back-button {
+    margin-bottom: 15px;
 }
