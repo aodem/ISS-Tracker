@@ -123,10 +123,9 @@ $(document).ready(function () {
     //Calling ISS Map Animation Function
     moveISS();
 
-    // //rocket man
-    // var intervaId;
+    
 
-    // intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
+     intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
 
 
     $('#rocketMan').on("click", function () {
@@ -173,5 +172,3 @@ $("#numPasses").on("change", function (event) {
    
 });
 
-//Rocket Man Click Event to View ISS Live Feed
-//$("#rocketMan").on("click", function (event) {}

@@ -33,7 +33,6 @@ document.addEventListener("keyup", function (event) {
     console.log(userVal);
     event.preventDefault();
     console.log("We are here")
-    // var location = $("#search_bar").val().trim();
     var queryURL = "http://www.mapquestapi.com/geocoding/v1/address?key=sVLMqoRolFyhsmbAGzECprYrQinTd4CB&location=" + location;
 
     //AJAX Get Request -- Mapquest API
@@ -47,8 +46,7 @@ document.addEventListener("keyup", function (event) {
 
         var latitude = response.results[0].locations[0].latLng.lat;
         var longitude = response.results[0].locations[0].latLng.lng;
-        // var riseTime;
-        // var duration;
+      
 
         console.log("Latitude: " + latitude);
         console.log("Longitude: " + longitude);
@@ -57,15 +55,14 @@ document.addEventListener("keyup", function (event) {
           location: location,
           latitude: latitude,
           longitude: longitude,
-          // riseTime: riseTime,
-          // duration: duration
+         
         };
 
         //Pushes location object to Firebase
         database.ref().push(locationInfo);
 
         //Changes window to results page
-        // window.location.replace("results.html");
+       
         window.location.href = "./results.html"
       });
   } else if (event.keyCode === 13 && userVal == false){
@@ -73,25 +70,6 @@ document.addEventListener("keyup", function (event) {
     $(".invalid-feedback").text("Please enter a valid location.");
   }
 });
-
-//Click Event for Using Current Location Coordinates
-
-  //Search History
-
-  // firebase.database.ref().limitToLast(5).once().then(function (childSnapshot) {
-
-  //   let listDiv = $("<div>");
-  //   let listShell = $("<ul>");
-
-  //   var dblocation = childSnapshot.val().location;
-
-  //   $(listShell).append(dblocation);
-
-  //   listDiv.empty();
-  //   listDiv.append(listShell);
-
-  //   $(".tabContent").html(listDiv);
-  // });
 
   //tab animations
   $(".nav_tab_body").on("click", function () {
