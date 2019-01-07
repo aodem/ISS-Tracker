@@ -8,7 +8,6 @@ video, #page_two{
     min-width: 100%;
     min-height: 100%;
     width: 100vw;
-    /* height: 100vh; */
     z-index: -100;
     transform: translate(-50%, -50%);
 } 
@@ -98,7 +97,6 @@ p {
 .nav_tab_body {
     clear: left;
     position: relative;
-    /* border: 1px solid red; */
     padding: 0;
     height: 17.75em;
     margin-top: 0.7em;
@@ -191,21 +189,10 @@ p {
 .tabsSlide {
     clear: left;
     position: relative;
-    /* border: 1px solid red; */
     padding: 0;
     height: 17.75em;
     margin-top: 0.7em;
     left: -13.25em;
-    /* color: #ACC0B9;
-    background-color: rgb(29, 50, 109, 0.5);
-    margin-top: 1em;
-    z-index: -50;
-    position: relative;
-    width: 1em;
-    height: 4rem;
-    line-height: 4;
-    text-align: center;
-    border: 1px solid #ACC0B9; */
     animation-name: tabSlide;
     animation-duration: 3s;
     animation-fill-mode: forwards;
@@ -213,9 +200,6 @@ p {
 
 @keyframes tabSlide {
     0% {left: -13.25em}
-    /* 25% {left: -10.25em}
-    50%{left: -9em}
-    75%{left: -5em} */
     100%{left: 2em}
 }
 
