@@ -112,7 +112,9 @@ $(document).ready(function () {
 
             console.log(response4);
 
-            $("#astronauts").append("<h3>Who Is On the ISS?</h3>");
+            var numAstro = response4.people.length;
+
+            $("#numberAstronauts").append(numAstro);
 
             //Writing Info to the Page
             for (var i = 0; i < response4.people.length; i++) {
@@ -123,9 +125,9 @@ $(document).ready(function () {
     //Calling ISS Map Animation Function
     moveISS();
 
-    
+   
+    intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
 
-     intervalId = setInterval(() => { $('#rocketMan').tooltip('show') }, 3000)
 
 
     $('#rocketMan').on("click", function () {
@@ -170,5 +172,13 @@ $("#numPasses").on("change", function (event) {
             });
     });
    
+});
+
+
+//Rocket Man Click Event to View ISS Live Feed
+$("#rocketMan").on("click", function(event) {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#results_containerISS").offset().top
+    }, 500);
 });
 
